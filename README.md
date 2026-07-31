@@ -12,13 +12,22 @@ Automation
 
 ## Architecture Architecture  
 
-```mermaid
 graph TD
-    Internet --> Firewall
-    Firewall --> VNet
+    Internet --> AzureFirewall
+
+    AzureFirewall --> VNet
+
+    VNet --> AzureFirewallSubnet
     VNet --> ManagementSubnet
     VNet --> ProductionSubnet
-    ProductionSubnet --> WindowsVM --> AMA AMA --> DCR DCR --> LogAnalytics LogAnalytics --> Sentinel
+
+    ProductionSubnet --> WindowsVM
+    ProductionSubnet --> LinuxVM
+
+    WindowsVM --> AMA
+    AMA --> DCR
+    DCR --> LogAnalytics
+    LogAnalytics --> Sentinel
     ProductionSubnet --> LinuxVM
 ```
 
