@@ -11,23 +11,19 @@ Infrastructure as Code (Terraform)
 Automation
 
 ## Architecture Architecture  
-
+```mermaid
 graph TD
-    Internet --> AzureFirewall
+    Internet --> AzureFirewall[Azure Firewall]
 
-    AzureFirewall --> VNet
+    AzureFirewall --> VNet[Virtual Network]
 
-    VNet --> AzureFirewallSubnet
-    VNet --> ManagementSubnet
-    VNet --> ProductionSubnet
+    VNet --> ManagementSubnet[Management Subnet]
+    VNet --> ProductionSubnet[Production Subnet]
 
-    ProductionSubnet --> WindowsVM
-    ProductionSubnet --> LinuxVM
+    ProductionSubnet --> WindowsVM[Windows VM]
+    ProductionSubnet --> LinuxVM[Linux VM]
 
-    WindowsVM --> AMA
-    AMA --> DCR
-    DCR --> LogAnalytics
-    LogAnalytics --> Sentinel
-    ProductionSubnet --> LinuxVM
-```
-
+    WindowsVM --> AMA[Azure Monitor Agent]
+    AMA --> DCR[Data Collection Rule]
+    DCR --> LAW[Log Analytics Workspace]
+    LAW --> Sentinel[Microsoft Sentinel]
