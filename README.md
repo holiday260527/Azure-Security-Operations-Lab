@@ -1,6 +1,9 @@
 # cloud-security-lab
 Personal Cloud Security Lab simulating a UK company.
 
+## Objectives
+
+This lab focuses on building practical cloud security skills:
 Azure Security
 Security Operations
 Detection Engineering
